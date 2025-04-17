@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'supabase/supabase_service.dart';
 import 'models/review_item.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: ".env");
   await SupabaseService.initializeSupabase();
   runApp(const MyApp());
 }

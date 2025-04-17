@@ -1,5 +1,4 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../utils/notification_service.dart';
 import '../models/review_item.dart';
 
@@ -7,10 +6,12 @@ class SupabaseService {
   static const String tableName = 'review_items';
 
   static Future<void> initializeSupabase() async {
-    final supabaseUrl = dotenv.env['SUPABASE_URL'];
-    final supabaseAnonKey = dotenv.env['SUPABASE_ANON_KEY'];
+    const supabaseUrl =
+        String.fromEnvironment('SUPABASE_URL', defaultValue: '');
+    const supabaseAnonKey =
+        String.fromEnvironment('SUPABASE_ANON_KEY', defaultValue: '');
 
-    if (supabaseUrl == null || supabaseAnonKey == null) {
+    if (supabaseUrl == "" || supabaseAnonKey == "") {
       throw Exception('Supabase URL or Anon Key is not set in .env file');
     }
 
