@@ -14,7 +14,7 @@ class SupabaseService {
     if (supabaseUrl == "" || supabaseAnonKey == "") {
       throw Exception('Supabase URL or Anon Key is not set in .env file');
     }
-
+    print("Supabase URL: $supabaseUrl");
     await Supabase.initialize(
       url: supabaseUrl,
       anonKey: supabaseAnonKey,
